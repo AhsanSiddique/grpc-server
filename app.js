@@ -77,7 +77,7 @@ function sayHello(call, callback) {
 function main() {
     var server = new grpc.Server();
     server.addService(hello_proto.Greeter.service, { sayHello: sayHello });
-    server.bindAsync(`0.0.0.0:${portgRPC}`, grpc.ServerCredentials.createFromSecureContext(), () => {
+    server.bindAsync(`0.0.0.0:${portgRPC}`, grpc.ServerCredentials.createInsecure(), () => {
         console.log(`gRPC server listening on ${portgRPC}`)
         server.start();
 
